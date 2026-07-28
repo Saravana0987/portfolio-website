@@ -22,7 +22,7 @@ export const roles = [
 
 export const heroStats = [
   { value: '500+', label: 'LeetCode Problems' },
-  { value: '3', label: 'AWS Certifications' },
+  { value: '2', label: 'AWS Certifications' },
   { value: '2+', label: 'Projects' },
   { value: '8.0', label: 'CGPA' },
 ]
@@ -119,7 +119,7 @@ export const certificates = [
 
 export const achievements = [
   { value: 500, suffix: '+', label: 'LeetCode Problems' },
-  { value: 3, suffix: '', label: 'AWS Certifications' },
+  { value: 2, suffix: '', label: 'AWS Certifications' },
   { value: 2, suffix: '+', label: 'Projects' },
   { value: 8, suffix: '.0', label: 'CGPA' },
 ]

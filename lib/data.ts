@@ -9,7 +9,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/r-saravana-760112237',
   github: 'https://github.com/Saravana0987',
   leetcode: 'https://leetcode.com/u/jys72wKtqR/',
-  resume: '/resume.pdf',
+  resume: '/R_Saravana_Resume(1).pdf',
 }
 
 export const roles = [

@@ -1,5 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
+type GeminiResponse = {
+  candidates?: Array<{
+    content?: {
+      parts?: Array<{ text?: string }>;
+    };
+  }>;
+};
+
 const SYSTEM_PROMPT = `
 You are the AI assistant embedded on R. Saravana's portfolio website.
 You answer visitor questions about R. Saravana in a friendly, concise way,
@@ -7,6 +20,9 @@ speaking about him in third person (not as if you are him).
 
 Facts about R. Saravana:
 - Full Stack Developer, Java Developer, and AWS Certified engineer.
+- Currently a Forward Deployed Engineer Intern at Vilasat AI LLC, working on
+  AI-powered solutions, Python automation, API integrations, and LLM/RAG
+  applications.
 - Skills: HTML, CSS, JavaScript, Bootstrap, React, Tailwind CSS (frontend);
   Node.js, Express, Java, Python (backend); MySQL (database); AWS (cloud);
   Git, GitHub, VS Code, PyCharm (tools).
@@ -36,45 +52,82 @@ Rules:
 
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
+    const body: { messages?: unknown } = await req.json();
 
-    if (!process.env.ANTHROPIC_API_KEY) {
+    if (
+      !Array.isArray(body.messages) ||
+      body.messages.length === 0 ||
+      !body.messages.every(
+        (message): message is ChatMessage =>
+          typeof message === "object" &&
+          message !== null &&
+          "role" in message &&
+          (message.role === "user" || message.role === "assistant") &&
+          "content" in message &&
+          typeof message.content === "string",
+      )
+    ) {
+      return NextResponse.json(
+        { error: "Please provide a valid chat message." },
+        { status: 400 },
+      );
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
       return NextResponse.json(
         {
           error:
-            "Server is missing ANTHROPIC_API_KEY. Add it in Vercel env vars.",
+            "Server is missing GEMINI_API_KEY. Add it to .env.development.local for local development or to your deployment environment variables.",
         },
         { status: 500 },
       );
     }
 
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
+    const response = await fetch(
+      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-goog-api-key": apiKey,
+        },
+        body: JSON.stringify({
+          systemInstruction: {
+            parts: [{ text: SYSTEM_PROMPT }],
+          },
+          contents: body.messages.map((message) => ({
+            role: message.role === "assistant" ? "model" : "user",
+            parts: [{ text: message.content }],
+          })),
+          generationConfig: {
+            maxOutputTokens: 500,
+          },
+        }),
       },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 500,
-        system: SYSTEM_PROMPT,
-        messages: messages,
-      }),
-    });
+    );
 
     if (!response.ok) {
-      const errText = await response.text();
-      console.error("Anthropic API error:", errText);
+      console.error("Gemini API request failed:", response.status);
       return NextResponse.json(
         { error: "Failed to get a response from the AI." },
         { status: 502 },
       );
     }
 
-    const data = await response.json();
-    const reply =
-      data.content?.[0]?.text ?? "Sorry, I couldn't generate a response.";
+    const data: GeminiResponse = await response.json();
+    const reply = data.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text ?? "")
+      .join("")
+      .trim();
+
+    if (!reply) {
+      console.error("Gemini API returned no text candidate.");
+      return NextResponse.json(
+        { error: "The AI returned an empty response. Please try again." },
+        { status: 502 },
+      );
+    }
 
     return NextResponse.json({ reply });
   } catch (err) {

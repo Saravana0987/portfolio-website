@@ -131,6 +131,17 @@
   mask-image: radial-gradient(ellipse at 70% 48%, #000 0%, transparent 74%);
 }
 
+.avatar-motion {
+  animation: avatar-motion 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-motion {
+    animation: none;
+  }
+}
+
 @keyframes blob {
   0%,
   100% {
@@ -141,6 +152,16 @@
   }
   66% {
     transform: translate(-25px, 25px) scale(0.95);
+  }
+}
+
+@keyframes avatar-motion {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
   }
 }
 

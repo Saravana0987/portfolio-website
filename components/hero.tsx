@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Code2, Download, Mail } from 'lucide-react'
+import { AvatarIntro } from '@/components/avatar-intro'
 import { GithubIcon, LinkedinIcon } from '@/components/brand-icons'
 import { heroStats, profile, roles } from '@/lib/data'
 
@@ -130,6 +131,7 @@ export function Hero() {
               </a>
             ))}
           </div>
+
         </motion.div>
 
         <motion.div
@@ -154,18 +156,11 @@ export function Hero() {
               fill
               priority
               sizes="(max-width: 768px) 85vw, 460px"
-              className="object-cover object-top grayscale-[0.25] contrast-110 brightness-90"
+              className="avatar-motion object-cover object-top grayscale-[0.25] contrast-110 brightness-90"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
             <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-            <div className="absolute inset-x-8 bottom-8 border-l-2 border-primary pl-4">
-              <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
-                Building with purpose
-              </p>
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
-                Code · Cloud · AI
-              </p>
-            </div>
+            <AvatarIntro />
           </div>
 
           {highlights.map((highlight, index) => (

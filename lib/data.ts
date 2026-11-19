@@ -3,15 +3,15 @@ export const profile = {
   title:
     "Forward Deployed Engineer Intern | Full Stack Developer | Java Developer | AWS Certified | Problem Solver",
   tagline:
-    "I build modern web applications with clean code, scalable architecture, and beautiful user experiences.",
-  location: "Andhra Pradesh, India",
-  email: "saravanaraghupathi@gmail.com",
-  phone: "+91 9381536972",
-  linkedin: "https://www.linkedin.com/in/r-saravana-760112237",
-  github: "https://github.com/Saravana0987",
-  leetcode: "https://leetcode.com/u/jys72wKtqR/",
-  resume: "/R_Saravana_Resume_FDE.pdf",
-};
+    'I build modern web applications with clean code, scalable architecture, and beautiful user experiences.',
+  location: 'Andhra Pradesh, India',
+  email: 'saravanaraghupathi@gmail.com',
+  phone: '+91 9381536972',
+  linkedin: 'https://www.linkedin.com/in/r-saravana-760112237',
+  github: 'https://github.com/Saravana0987',
+  leetcode: 'https://leetcode.com/u/jys72wKtqR/',
+  resume: '/resume.pdf',
+}
 
 export const roles = [
   "Forward Deployed Engineer Intern",
@@ -23,11 +23,11 @@ export const roles = [
 ];
 
 export const heroStats = [
-  { value: "500+", label: "LeetCode Problems" },
-  { value: "2", label: "AWS Certifications" },
-  { value: "2+", label: "Projects" },
-  { value: "8.0", label: "CGPA" },
-];
+  { value: '500+', label: 'LeetCode Problems' },
+  { value: '3', label: 'AWS Certifications' },
+  { value: '2+', label: 'Projects' },
+  { value: '8.0', label: 'CGPA' },
+]
 
 export const aboutFeatures = [
   {
@@ -140,11 +140,11 @@ export const certificates = [
 ];
 
 export const achievements = [
-  { value: 500, suffix: "+", label: "LeetCode Problems" },
-  { value: 3, suffix: "", label: "AWS Certifications" },
-  { value: 2, suffix: "+", label: "Projects" },
-  { value: 8, suffix: ".0", label: "CGPA" },
-];
+  { value: 500, suffix: '+', label: 'LeetCode Problems' },
+  { value: 3, suffix: '', label: 'AWS Certifications' },
+  { value: 2, suffix: '+', label: 'Projects' },
+  { value: 8, suffix: '.0', label: 'CGPA' },
+]
 
 export const education = [
   {

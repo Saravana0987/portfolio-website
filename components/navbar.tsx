@@ -22,14 +22,14 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'border-b border-border bg-background/70 backdrop-blur-xl'
+          ? 'border-b border-primary/15 bg-background/85 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#home" className="font-heading text-lg font-bold tracking-tight">
-          <span className="text-gradient">RS</span>
-          <span className="text-foreground">.dev</span>
+      <nav className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-4 sm:px-6">
+        <a href="#home" className="font-heading text-lg font-bold tracking-[0.08em]">
+          <span className="text-foreground">RS</span>
+          <span className="text-primary">.DEV</span>
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -37,7 +37,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="rounded-md px-3 py-2 text-[0.7rem] font-semibold uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-primary"
               >
                 {link.label}
               </a>
@@ -50,7 +50,7 @@ export function Navbar() {
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="flex size-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:text-foreground"
+            className="flex size-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -58,7 +58,7 @@ export function Navbar() {
           <a
             href={profile.resume}
             download
-            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-transform hover:scale-105 sm:flex"
+            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold uppercase tracking-wider text-primary-foreground transition-all hover:scale-105 hover:shadow-[0_0_24px_-8px_var(--primary)] sm:flex"
           >
             <Download size={16} />
             Resume
@@ -69,7 +69,7 @@ export function Navbar() {
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={open}
-            className="flex size-9 items-center justify-center rounded-md border border-border text-foreground lg:hidden"
+            className="flex size-9 items-center justify-center rounded-md border border-border text-foreground hover:border-primary hover:text-primary lg:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -90,7 +90,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                    className="block rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
                   >
                     {link.label}
                   </a>
@@ -100,7 +100,7 @@ export function Navbar() {
                 <a
                   href={profile.resume}
                   download
-                  className="mt-2 flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground"
+                  className="mt-2 flex items-center justify-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold uppercase tracking-wider text-primary-foreground"
                 >
                   <Download size={16} />
                   Download Resume

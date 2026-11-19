@@ -51,7 +51,7 @@ export function AnimatedBackground() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(96, 165, 250, 0.6)'
+        ctx.fillStyle = 'rgba(255, 69, 97, 0.55)'
         ctx.fill()
       }
 
@@ -65,7 +65,7 @@ export function AnimatedBackground() {
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
             ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(139, 92, 246, ${0.12 * (1 - dist / 120)})`
+            ctx.strokeStyle = `rgba(240, 45, 79, ${0.12 * (1 - dist / 120)})`
             ctx.lineWidth = 0.6
             ctx.stroke()
           }
@@ -77,7 +77,7 @@ export function AnimatedBackground() {
           ctx.beginPath()
           ctx.moveTo(particles[i].x, particles[i].y)
           ctx.lineTo(mouse.x, mouse.y)
-          ctx.strokeStyle = `rgba(6, 182, 212, ${0.22 * (1 - md / 160)})`
+          ctx.strokeStyle = `rgba(255, 106, 94, ${0.22 * (1 - md / 160)})`
           ctx.lineWidth = 0.7
           ctx.stroke()
         }
@@ -112,9 +112,9 @@ export function AnimatedBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {/* glowing blobs */}
-      <div className="animate-blob absolute -left-32 top-0 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
+      <div className="animate-blob absolute -left-32 top-0 h-96 w-96 rounded-full bg-primary/15 blur-3xl" />
       <div className="animate-blob absolute right-0 top-1/3 h-[28rem] w-[28rem] rounded-full bg-secondary/20 blur-3xl [animation-delay:3s]" />
-      <div className="animate-blob absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-accent/15 blur-3xl [animation-delay:6s]" />
+      <div className="animate-blob absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-accent/10 blur-3xl [animation-delay:6s]" />
       {/* particle canvas */}
       <canvas ref={canvasRef} className="h-full w-full opacity-70" aria-hidden="true" />
     </div>

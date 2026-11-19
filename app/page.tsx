@@ -2,6 +2,7 @@ import { AnimatedBackground } from '@/components/animated-background'
 import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
 import { About } from '@/components/about'
+import { Experience } from '@/components/experience'
 import { Skills } from '@/components/skills'
 import { Projects } from '@/components/projects'
 import { Certificates } from '@/components/certificates'
@@ -18,6 +19,7 @@ export default function Page() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
         <Certificates />

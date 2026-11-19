@@ -4,11 +4,12 @@ import {
   Layout,
   Server,
   Wrench,
+  BrainCircuit,
   type LucideIcon,
-} from 'lucide-react'
-import { skillGroups } from '@/lib/data'
-import { SectionHeading } from '@/components/section-heading'
-import { Reveal } from '@/components/reveal'
+} from "lucide-react";
+import { skillGroups } from "@/lib/data";
+import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 
 const icons: Record<string, LucideIcon> = {
   Layout,
@@ -16,7 +17,8 @@ const icons: Record<string, LucideIcon> = {
   Database,
   Cloud,
   Wrench,
-}
+  AI: BrainCircuit,
+};
 
 export function Skills() {
   return (
@@ -30,7 +32,7 @@ export function Skills() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => {
-            const Icon = icons[group.icon]
+            const Icon = icons[group.icon];
             return (
               <Reveal key={group.category} direction="up" delay={i * 0.08}>
                 <div className="glass group relative h-full overflow-hidden rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-primary/50">
@@ -55,10 +57,10 @@ export function Skills() {
                   </div>
                 </div>
               </Reveal>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import { Brain, Cloud, Rocket, Users, type LucideIcon } from 'lucide-react'
-import { aboutFeatures } from '@/lib/data'
-import { SectionHeading } from '@/components/section-heading'
-import { Reveal } from '@/components/reveal'
+import { Brain, Cloud, Rocket, Users, type LucideIcon } from "lucide-react";
+import { aboutFeatures } from "@/lib/data";
+import { SectionHeading } from "@/components/section-heading";
+import { Reveal } from "@/components/reveal";
 
-const icons: Record<string, LucideIcon> = { Brain, Rocket, Users, Cloud }
+const icons: Record<string, LucideIcon> = { Brain, Rocket, Users, Cloud };
 
 export function About() {
   return (
@@ -15,9 +15,10 @@ export function About() {
           <Reveal direction="right">
             <div className="glass h-full rounded-3xl p-8">
               <p className="text-pretty text-lg leading-relaxed text-foreground">
-                Passionate Computer Science graduate with strong knowledge in{' '}
+                Passionate Computer Science graduate with strong knowledge in{" "}
                 <span className="text-primary">Full Stack Development</span>,
-                Java, Python, React, Node.js, MySQL and AWS.
+                Java, Python, React, Node.js, MySQL, AWS, Ai Agents, RAG, LLM,
+                N8N, MCP And VAPI AI.
               </p>
               <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
                 I enjoy building scalable applications and solving real-world
@@ -30,7 +31,7 @@ export function About() {
 
           <div className="grid gap-4 sm:grid-cols-2">
             {aboutFeatures.map((feature, i) => {
-              const Icon = icons[feature.icon]
+              const Icon = icons[feature.icon];
               return (
                 <Reveal key={feature.title} direction="left" delay={i * 0.1}>
                   <div className="glass group h-full rounded-2xl p-6 transition-all hover:-translate-y-1 hover:border-primary/50">
@@ -45,11 +46,11 @@ export function About() {
                     </p>
                   </div>
                 </Reveal>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

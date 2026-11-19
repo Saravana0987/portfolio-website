@@ -39,47 +39,47 @@
 /* Dark is the default, premium aesthetic */
 :root {
   color-scheme: dark;
-  --background: #050816;
-  --foreground: #e2e8f0;
+  --background: #080608;
+  --foreground: #f4f1f2;
   --card: rgba(255, 255, 255, 0.04);
-  --card-foreground: #e2e8f0;
-  --popover: #0a0f24;
-  --popover-foreground: #e2e8f0;
-  --primary: #3b82f6;
+  --card-foreground: #f4f1f2;
+  --popover: #10090c;
+  --popover-foreground: #f4f1f2;
+  --primary: #f02d4f;
   --primary-foreground: #f8fafc;
-  --secondary: #8b5cf6;
+  --secondary: #a41232;
   --secondary-foreground: #f8fafc;
   --muted: rgba(255, 255, 255, 0.05);
-  --muted-foreground: #94a3b8;
-  --accent: #06b6d4;
-  --accent-foreground: #050816;
+  --muted-foreground: #a49ba0;
+  --accent: #ff6a5e;
+  --accent-foreground: #080608;
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #3b82f6;
+  --ring: #f02d4f;
   --radius: 0.875rem;
 }
 
 .light {
   color-scheme: light;
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: rgba(15, 23, 42, 0.03);
-  --card-foreground: #0f172a;
+  --background: #fff8f8;
+  --foreground: #211217;
+  --card: rgba(67, 16, 29, 0.04);
+  --card-foreground: #211217;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
-  --primary: #2563eb;
+  --popover-foreground: #211217;
+  --primary: #c71940;
   --primary-foreground: #f8fafc;
-  --secondary: #7c3aed;
+  --secondary: #8d1935;
   --secondary-foreground: #f8fafc;
-  --muted: rgba(15, 23, 42, 0.04);
-  --muted-foreground: #475569;
-  --accent: #0891b2;
+  --muted: rgba(67, 16, 29, 0.05);
+  --muted-foreground: #65565c;
+  --accent: #b74639;
   --accent-foreground: #f8fafc;
   --destructive: #dc2626;
-  --border: rgba(15, 23, 42, 0.1);
-  --input: rgba(15, 23, 42, 0.08);
-  --ring: #2563eb;
+  --border: rgba(67, 16, 29, 0.12);
+  --input: rgba(67, 16, 29, 0.08);
+  --ring: #c71940;
 }
 
 @layer base {
@@ -89,6 +89,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    overflow-x: clip;
   }
   html {
     @apply font-sans;
@@ -109,9 +110,9 @@
   .text-gradient {
     background-image: linear-gradient(
       120deg,
-      var(--primary),
-      var(--secondary) 45%,
-      var(--accent)
+      #ff6678,
+      var(--primary) 52%,
+      #ff9a68
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -120,6 +121,14 @@
   .glow-primary {
     box-shadow: 0 0 60px -15px var(--primary);
   }
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: radial-gradient(ellipse at 70% 48%, #000 0%, transparent 74%);
 }
 
 @keyframes blob {
